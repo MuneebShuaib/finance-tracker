@@ -1,6 +1,6 @@
 import React from "react"
 
-const Transactions = ()=>{
+const AddTransaction = ()=>{
     return(
         <div>
             <form>
@@ -12,4 +12,4 @@ const Transactions = ()=>{
 }
 
 
-export default Transactions
+export default AddTransaction

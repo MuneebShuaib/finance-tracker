@@ -1,17 +1,19 @@
 import './index.css';
+import AddTransaction from './components/AddTransaction'
 
 
 function App() {
   return (
     <div className='container'>
         <div className ='left-side-bar'>
-          Fuck off ya bluddy clart
         </div>
         <div className = 'main-content'>
-          <section>
+          <section className = 'graphs-section'>
+
           </section>
 
-          <section>
+          <section className = 'transaction-section'>
+            <AddTransaction />
           </section>
         </div>
     </div>
