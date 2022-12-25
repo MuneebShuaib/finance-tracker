@@ -2,27 +2,32 @@ import React from "react"
 
 const AddTransaction = ()=>{
     return(
-        <form className = 'add-form'>
-            <div>
-                <label>Category: </label>
-                <input></input>
-            </div>
+        <>
+            <form className = 'add-form' >
+                <button type="submit">Submit</button>
 
-            <div>
-                <label>Date: </label>
-                <input></input>
-            </div>
+                <div>
+                    <label>Category: </label>
+                    <input></input>
+                </div>
 
-            <div>
-                <label>Expense: </label>
-                <input></input>
-            </div>
+                <div>
+                    <label>Date: </label>
+                    <input></input>
+                </div>
 
-            <div>
-                <label>Note: </label>
-                <input></input>
-            </div>
-        </form>
+                <div>
+                    <label>Expense: </label>
+                    <input ></input>
+                </div>
+
+                <div>
+                    <label>Note: </label>
+                    <input></input>
+                </div>
+            </form>
+        </>
+
     )
 
 }

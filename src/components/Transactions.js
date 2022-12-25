@@ -1,5 +1,5 @@
 import Transaction from './Transaction.js'
-
+import React from 'react'
 const Transactions = ({transactions})=>{
     return(
         <>

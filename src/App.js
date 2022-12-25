@@ -2,7 +2,11 @@ import './index.css';
 import AddTransaction from './components/AddTransaction.js'
 import { useState } from 'react';
 import Transactions from './components/Transactions.js'
+import React from 'react';
+
 function App() {
+  
+
   const [transactions, setTransactions] = useState([
   {
     id: 1,
@@ -19,9 +23,13 @@ function App() {
     note: 'Strip Club'
   }
   ])
+  //functions to change transactions
+  const AddTrans = ()=>{
 
+  }
 
   return (
+    
     <div className='container'>
         <div className ='left-side-bar'>
         </div>
@@ -31,6 +39,7 @@ function App() {
           </section>
 
           <section className = 'transaction-section'>
+            <AddTransaction />
             <Transactions transactions={transactions}/>
           </section>
         </div>
