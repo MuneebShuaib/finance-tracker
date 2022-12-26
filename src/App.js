@@ -24,9 +24,9 @@ function App() {
   }
   ])
   //functions to change transactions
-  const AddTrans = ()=>{
-
-  }
+  const AddTrans = (transaction)=>{
+    setTransactions([...transactions, transaction])
+  } 
 
   return (
     
@@ -39,7 +39,7 @@ function App() {
           </section>
 
           <section className = 'transaction-section'>
-            <AddTransaction />
+            <AddTransaction onAdd ={AddTrans}/>
             <Transactions transactions={transactions}/>
           </section>
         </div>

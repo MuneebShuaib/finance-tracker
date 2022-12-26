@@ -37,4 +37,28 @@ body{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
+  font-size: 1rem;
+}
+.add-form input{
+  padding: .5rem;
+  margin: .5rem;
+}
+.add-btn{
+  background-color: rgb(25, 205, 241);
+  border-radius: 12px;
+}
+.add-btn:hover{
+  background-color: rgb(29, 197, 231);
+}
+.add-btn:active{
+  background-color: rgb(25, 163, 190);
+
+}
+
+.listed-transactions{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+
 }
