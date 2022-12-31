@@ -25,8 +25,12 @@ function App() {
   ])
   //functions to change transactions
   const AddTrans = (transaction)=>{
+    transaction.id = Math.floor((Math.random()*10000)+1);
     setTransactions([...transactions, transaction])
   } 
+  const removeTrans = (id)=>{
+    transactions.filter
+  }
 
   return (
     
