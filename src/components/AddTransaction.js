@@ -1,11 +1,7 @@
 import React from "react"
 import { useState } from "react"
+import propTypes from 'prop-types'
 const AddTransaction = ({onAdd})=>{
-    // id: 2,
-    // category: 'Entertainment',
-    // date: '12/18/2022',
-    // expenditure: '$7332.9',
-    // note: 'Strip Club'
 
     const [category, setCategory] = useState('')
     const [date, setDate] = useState('')
@@ -19,7 +15,7 @@ const AddTransaction = ({onAdd})=>{
 
         setCategory('')
         setDate('')
-        setExpenditure('')
+        setExpenditure(0)
         setNote('')
     }
     return(
@@ -48,10 +44,23 @@ const AddTransaction = ({onAdd})=>{
                 </div>
             </form>
         </>
-
     )
 
 }
 
+
+AddTransaction.defaultProps = {
+    category: 'I should see this',
+    date: 'N/A',
+    expenditure: 0,
+    note: 'N/A'
+}
+
+AddTransaction.propTypes = {
+    category: propTypes.string,
+    date: propTypes.string,
+    expenditure: propTypes.number,
+    note: propTypes.string
+};
 
 export default AddTransaction

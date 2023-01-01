@@ -29,7 +29,7 @@ function App() {
     setTransactions([...transactions, transaction])
   } 
   const removeTrans = (id)=>{
-    transactions.filter
+    //transactions.filter
   }
 
   return (
