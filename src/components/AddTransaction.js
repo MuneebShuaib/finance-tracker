@@ -1,11 +1,11 @@
 import React from "react"
 import { useState } from "react"
-import propTypes from 'prop-types'
+
 const AddTransaction = ({onAdd})=>{
 
     const [category, setCategory] = useState('')
     const [date, setDate] = useState('')
-    const [expenditure, setExpenditure] = useState('')
+    const [expenditure, setExpenditure] = useState(0)
     const [note, setNote] = useState('')
 
     const onSubmit = (e)=>{
@@ -47,20 +47,5 @@ const AddTransaction = ({onAdd})=>{
     )
 
 }
-
-
-AddTransaction.defaultProps = {
-    category: 'I should see this',
-    date: 'N/A',
-    expenditure: 0,
-    note: 'N/A'
-}
-
-AddTransaction.propTypes = {
-    category: propTypes.string,
-    date: propTypes.string,
-    expenditure: propTypes.number,
-    note: propTypes.string
-};
 
 export default AddTransaction
