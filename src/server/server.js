@@ -1,8 +1,13 @@
-const {MongoClient} = require("mongodb");
-require('dotenv').config()
+const {config} = require('')
+dotenv.config();
+
+
+const {MongoClient} = require('mongodb');
+
 async function main(){
-    //const uri = ;
-    const client = new MongoClient(uri);
+
+    const URI = process.env.URI;
+    const client = new MongoClient(URI);
 
     async function listDatabases(client){
         databasesList = await client.db().admin().listDatabases();
@@ -27,5 +32,6 @@ async function main(){
 
 }
 main().catch(console.error)
+
 
 
