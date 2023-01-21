@@ -1,8 +1,9 @@
 
-// @desc    Set goals
+// @desc    Set transactions
 // @route   Get /api/transactions
 // @access  Private 
 const getTransactions = (req, res) => {
+    console.log(req.body)
     res.json({
         message: 'Get transactions'
     })
