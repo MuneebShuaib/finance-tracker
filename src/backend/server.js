@@ -2,6 +2,12 @@ const connectDB = require('./config/db')
 const express = require('express')
 const dotenv = require('dotenv').config()
 const routes = require('./routes/transactionRoutes')
+const {errorHandler} = require('./middleware/errorMidleware')
+
+
+
+connectDB()
+
 const app = express()
 
 
@@ -12,6 +18,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use('/api/transactions', routes)
+app.use(errorHandler)
 app.listen(PORT, ()=> console.log(`server connected on port ${PORT}`))
 
-connectDB()
