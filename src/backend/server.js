@@ -19,5 +19,6 @@ app.use(express.urlencoded({extended: false}))
 
 app.use('/api/transactions', routes)
 app.use(errorHandler)
+//run express server on PORT, and console log 'server connected on port 5000'
 app.listen(PORT, ()=> console.log(`server connected on port ${PORT}`))
 
