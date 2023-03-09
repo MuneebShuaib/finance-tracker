@@ -1,54 +1,32 @@
 const asyncHandler = require('express-async-handler')
 const users = require('../models/userModel')
 
-// @desc    Set users
-// @route   Get /api/users
-// @access  Private 
-const getUsers = asyncHandler(async (req, res) => {
-    const user = await users.find()
+// @desc    Authenticate a user
+// @route   POST /api/users/login
+// @access  Public 
+const loginUser = asyncHandler(async (req, res) => {
 
-    res.status(200).json(user)
+    res.json({message: "Authenticate user"})
 })
-// @desc    Set users
+// @desc    Register new user users
 // @route   POST /api/users
-// @access  Private 
-const setUser = asyncHandler(async (req, res) => {
-    const user = await users.create({
-        text: req.body.text
-    })
-    res.json(user)
+// @access  Public 
+const registerUser = asyncHandler(async (req, res) => {
+    // const user = await users.create({
+    //     text: req.body.text
+    // })
+    res.json({message: "Register user test"})
 })
-// @desc    Update goal
-// @route   PUT /api/users:id
-// @access  Private 
-const updateUser = asyncHandler(async (req, res) => {
-    const user = await users.findById(req.params.id)
-    if(!user){
-        res.status(400)
-        throw new Error('Goal not found')
-    }
+// @desc    Get user data
+// @route   GET /api/users/me
+// @access  Public 
+const getMe = asyncHandler(async (req, res) => {
+    res.json({message: "User data display"})
 
-    const updateduser = await users.findByIdAndUpdate(req.params.id, req.body, {new: true})
-    res.status(200).json(updateduser)
-})
-// @desc    Delete goal
-// @route   DELETE /api/users:id
-// @access  Private 
-const deleteUsers = asyncHandler(async (req, res) => {
-    const user = users.findById(req.params.id)
-    if(!user){
-        res.status(400)
-        throw new Error('Goal not found')
-    }
-    //I dont need to save it and output, it wont be there anyways lol so i can just output
-    //the id for front end use later
-    await user.findOneAndRemove({_id: req.params.id})
-    res.json({id: req.params.id})
 })
 
 module.exports = {
-    getUsers,
-    setUser,
-    updateUser,
-    deleteUsers
+    registerUser,
+    loginUser,
+    getMe
 }
