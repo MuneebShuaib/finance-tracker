@@ -1,8 +1,8 @@
 const connectDB = require('./config/db')
 const express = require('express')
-const dotenv = require('dotenv').config()
 const routes = require('./routes/transactionRoutes')
 const {errorHandler} = require('./middleware/errorMidleware')
+require('dotenv').config()
 
 
 

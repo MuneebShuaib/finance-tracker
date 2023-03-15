@@ -6,11 +6,12 @@
 const express = require('express')
 const router = express.Router();
 const {registerUser, loginUser, getMe} = require('../controllers/userController')
+const {protect} = require("../middleware/authMiddleware.js")
 //we add a user with a post request
 //when a post request is made on api/transactions, call the registerUser function
 router.post('/', registerUser)
 router.post('/login', loginUser)
-router.get('/me', getMe)
+router.get('/me', protect, getMe)
 
 
 
