@@ -75,9 +75,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  PRIVATE 
 const getMe = asyncHandler(async (req, res) => {
-    res.json({message: "User data display"})
-    const {_id, name, email} = await User.findById(req.user.id);
-
+    res.json(req.user)
 })
 const generateToken = (id) =>{
     //sign a new token with the id that is passed in
