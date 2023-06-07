@@ -1,8 +1,7 @@
-import './index.css';
+import '../index.css';
 import AddTransaction from '../components/AddTransaction.js'
 import { useState } from 'react';
 import Transactions from '../components/Transactions.js'
-import React from 'react';
 
 function Dashboard(){
     
