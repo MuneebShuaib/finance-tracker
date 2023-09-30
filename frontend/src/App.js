@@ -8,6 +8,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
 
@@ -23,6 +25,7 @@ function App() {
 
         </Routes>
     </Router>
+    <ToastContainer/>
     </div>
   );
 }

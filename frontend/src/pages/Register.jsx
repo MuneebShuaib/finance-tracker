@@ -1,7 +1,12 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import {useSelector, useDispatch} from 'react-redux'
+import {toast} from 'react-toastify'
 import {useState, useEffect} from 'react'
 import '../index.css'
+import {register, reset} from '../features/auth/authSlice'
+import { useNavigate } from 'react-router-dom';
+import Spinner from '../components/Spinner'
 function Register(){
 
     const [formData, setFormData] = useState({
@@ -12,6 +17,21 @@ function Register(){
     })
     const {name, email, password, password2} = formData
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const{user, isLoading, isError, isSuccess, message} = useSelector((state)=>state.auth)
+    //anything i put in this dependency array will fire off use effect
+    useEffect(()=>{
+      if(isError){
+        toast.error(message)
+      }
+      if(isSuccess || user){
+        navigate('/login')
+      }
+
+      dispatch(reset())
+    }, [user, isError, isSuccess, message, navigate, dispatch])
     const onChange = (e)=>{
       //set form data to whatever we enter
       //formData is just one object 
@@ -23,8 +43,25 @@ function Register(){
     }
 
     const onSubmit = (e)=>{
-      e.preventDefault()
-    }
+
+      e.preventDefault();
+
+      if(password !== password2){
+        toast.error('Passwords do not match')
+      }
+      else{
+        const userData = {
+          name,
+          email,
+          password,
+        }
+        dispatch(register(userData))
+        }
+
+      }
+      if(isLoading){
+        return <Spinner />
+      }
     return(
         <Form>
           <h1>Create an account</h1>
@@ -40,7 +77,7 @@ function Register(){
           <div className='form-group'>
               <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
           </div>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onSubmit={onSubmit()}>
           Submit
         </Button>
       </Form>

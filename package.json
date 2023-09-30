@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon src/backend/server.js",
+    "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend"
   },
   "eslintConfig": {
@@ -46,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 }
