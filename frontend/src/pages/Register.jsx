@@ -27,7 +27,7 @@ function Register(){
         toast.error(message)
       }
       if(isSuccess || user){
-        navigate('/login')
+        navigate('/register')
       }
 
       dispatch(reset())
@@ -61,7 +61,7 @@ function Register(){
         return <Spinner />
       }
     return(
-        <Form>
+        <Form onSubmit={onSubmit}>
           <h1>Create an account</h1>
           <div className='form-group'>
               <input type="text" className="form-control" placeholder='Enter your name' value={name} id='name' name='name' onChange={onChange} />
@@ -75,7 +75,7 @@ function Register(){
           <div className='form-group'>
               <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
           </div>
-        <Button variant="primary" type="submit" onSubmit={onSubmit}>
+        <Button variant="primary" type="submit" >
           Submit
         </Button>
       </Form>
