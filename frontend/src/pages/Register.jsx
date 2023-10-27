@@ -43,9 +43,7 @@ function Register(){
     }
 
     const onSubmit = (e)=>{
-
-      e.preventDefault();
-
+      e.preventDefault()
       if(password !== password2){
         toast.error('Passwords do not match')
       }
@@ -77,7 +75,7 @@ function Register(){
           <div className='form-group'>
               <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
           </div>
-        <Button variant="primary" type="submit" onSubmit={onSubmit()}>
+        <Button variant="primary" type="submit" onSubmit={onSubmit}>
           Submit
         </Button>
       </Form>
