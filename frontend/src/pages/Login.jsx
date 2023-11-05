@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import {useState, useEffect} from 'react'
 import '../index.css'
+import mongoose from 'mongoose';
 function Login(){
 
     const [formData, setFormData] = useState({
@@ -22,9 +23,10 @@ function Login(){
 
     const onSubmit = (e)=>{
       e.preventDefault()
+      if(email == )
     }
     return(
-        <Form>
+        <Form onSubmit={onSubmit}>
           <h1>Login</h1>
 
           <div className='form-group'>
