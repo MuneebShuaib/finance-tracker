@@ -30,7 +30,7 @@ function Dashboard(){
       //transactions.filter
     }
     return(
-        <div className='container'>
+      <div className='container'>
         <div className ='left-side-bar'>
         </div>
         <div className = 'main-content'>

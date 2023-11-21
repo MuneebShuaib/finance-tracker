@@ -62,7 +62,7 @@ function Register(){
         return <Spinner />
       }
     return(
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} className='form'>
           <h1>Create an account</h1>
           <div className='form-group'>
               <input type="text" className="form-control" placeholder='Enter your name' value={name} id='name' name='name' onChange={onChange} />

@@ -54,7 +54,7 @@ function Login(){
       dispatch(login(userData))
     }
     return(
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} className='form'>
           <h1>Login</h1>
 
           <div className='form-group'>
