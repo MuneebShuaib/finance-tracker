@@ -1,7 +1,6 @@
 import Transaction from './Transaction.js'
 import React from 'react'
 
-const axios = require('axios').default;
 
 const Transactions = ({transactions})=>{
 
