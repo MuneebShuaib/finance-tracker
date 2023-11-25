@@ -146,7 +146,7 @@ body{
   justify-content: center;
   align-items: center;
   background-color: rgb(194, 126, 42);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   padding: 1rem;
   gap: 1rem;
   min-width: 25vw;
