@@ -8,19 +8,20 @@ const transactionSchema = mongoose.Schema(
         //
         ref: 'User'
     },
-    text: {
-        type: String,
-        required: [true, 'Please add a text value']
-    },
-    note:{
-        type: String
-    },
     category:{
         type: String
     },
     expenditure:{
         type: Number
-    }
+    },
+    date: {
+        type: Date,
+        //required: [true, 'Please add a text value']
+    },
+    note:{
+        type: String
+    },
+
 }, 
 {
     timestamps: true

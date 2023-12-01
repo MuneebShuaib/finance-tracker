@@ -17,13 +17,16 @@ const getTransactions = asyncHandler(async (req, res) => {
 // @access  Private 
 const setTransaction = asyncHandler(async (req, res) => {
 
-    if(!req.body.text){
+    if(!req.body.category){
         res.status(400)
-        throw new Error("Add a text field")
+        throw new Error("Fill All Text Fields")
     }
 
     const transaction = await transactions.create({
-        text: req.body.text,
+        category: req.body.category,
+        date: req.body.date,
+        expenditure: req.body.expenditure,
+        note: req.body.note,
         user: req.user.id
     })
     res.json(transaction)

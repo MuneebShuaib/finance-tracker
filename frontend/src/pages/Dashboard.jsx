@@ -1,44 +1,38 @@
 import '../index.css';
-import AddTransaction from '../components/AddTransaction.js'
+import TransactionForm from '../components/TransactionForm'
 import { useState } from 'react';
-import Transactions from '../components/Transactions.js'
+import Transactions from '../components/Transactions'
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import Spinner from '../components/Spinner'
+import {getTransactions, reset} from '../features/transactions/transactionSlice'
 function Dashboard(){
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-    const {user} = useSelector((state) => state.auth)
-    //if no user detected then navigate to the login page
+    const { user } = useSelector((state) => state.auth)
+    const { transactions, isLoading, isError, message} = useSelector((state) => state.transactions)
     useEffect(()=> {
+      if(isError){
+        console.log(message)
+      }
+      //if no user detected then navigate to the login page
       if(!user){
         navigate('/login')
       }
-    }, [user,navigate])
-  const [transactions, setTransactions] = useState([
-    {
-      id: 1,
-      category: 'Groceries',
-      date: '12/23/2022',
-      expenditure: '$73.9',
-      note: 'Went to Aldis'
-    },
-    {
-      id: 2,
-      category: 'Entertainment',
-      date: '12/18/2022',
-      expenditure: '$7332.9',
-      note: 'Strip Club'
+
+      dispatch(getTransactions())
+
+      return ()=>{
+        dispatch(reset())
+      }
+    }, [user,navigate, isError, message, dispatch])
+
+    if(isLoading){
+      return <Spinner />
     }
-    ])
-    //functions to change transactions
-    const AddTrans = (transaction)=>{
-      transaction.id = Math.floor((Math.random()*10000)+1);
-      setTransactions([...transactions, transaction])
-    } 
-    const removeTrans = (id)=>{
-      //transactions.filter
-    }
+
     return(
       <div className='container'>
         <div className ='left-side-bar'>
@@ -50,7 +44,7 @@ function Dashboard(){
           </section>
 
           <section className = 'transaction-section'>
-            <AddTransaction onAdd ={AddTrans}/>
+            <TransactionForm />
             <Transactions transactions={transactions}/>
           </section>
         </div>
