@@ -15,7 +15,7 @@ export const createTransaction = createAsyncThunk('transactions/create', async(t
         return await transactionService.createTransaction(transactionData, token)
     } 
     catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message || error.message || error.toString())
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -30,6 +30,20 @@ export const getTransactions = createAsyncThunk('transactions/getAll', async (_,
         return thunkAPI.rejectWithValue(message)
     }
 })
+//Delete transaction
+export const deleteTransaction = createAsyncThunk('transactions/delete', async(id, thunkAPI) =>{
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await transactionService.deleteTransaction(id, token)
+    } 
+    catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+
+
 export const transactionSlice = createSlice({
     name: 'transaction',
     initialState,
@@ -62,6 +76,21 @@ export const transactionSlice = createSlice({
             .addCase(getTransactions.rejected, (state, action)=>{
                 state.isLoading = false
                 state.isError = false
+                state.message = action.payload
+            })
+            .addCase(deleteTransaction.pending, (state)=>{
+                state.isLoading = true
+            })
+            .addCase(deleteTransaction.fulfilled, (state, action)=>{
+                state.isLoading = false
+                state.isSuccess = true
+                //only shows goals not equal to that, filters it out of the UI
+                state.transactions = state.transactions.filter((transaction)=> transaction._id !== action.payload.id)
+            })
+            .addCase(deleteTransaction.rejected, (state, action)=>{
+                state.isSuccess=false
+                state.isLoading = false
+                state.isError = true
                 state.message = action.payload
             })
 

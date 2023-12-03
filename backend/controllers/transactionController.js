@@ -56,26 +56,28 @@ const updateTransaction = asyncHandler(async (req, res) => {
 // @desc    Delete goal
 // @route   DELETE /api/transactions:id
 // @access  Private 
-const deleteTransactions = asyncHandler(async (req, res) => {
-    const transaction = transactions.findById(req.params.id)
+const deleteTransaction = asyncHandler(async (req, res) => {
+    const transaction = await transactions.findOne({_id : req.params.id})
+    
+    
     if(!transaction){
         res.status(400)
-        throw new Error('Goal not found')
+        throw new Error('Transaction not found1')
     }
     //I dont need to save it and output, it wont be there anyways lol so i can just output
     //the id for front end use later
-    const user1 = await User.findById(req.user.id)
+    const user = await User.findById(req.user.id)
     //Check for user
-    if(!user1){
+    if(!user){
         res.status(401)
         throw new Error('User not found')
     }
     //make sure logged in user matches the transaction user
-    if((transaction.user) !== user1.id){
+    if(transaction.user.toString() !== user.id){
         res.status(401)
-        throw new Error('User not found')
+        throw new Error('User not authorized')
     }
-    await transaction.findOneAndRemove({_id: req.params.id})
+    await transactions.findByIdAndDelete(req.params.id)
     res.json({id: req.params.id})
 })
 
@@ -83,5 +85,5 @@ module.exports = {
     getTransactions,
     setTransaction,
     updateTransaction,
-    deleteTransactions
+    deleteTransaction
 }

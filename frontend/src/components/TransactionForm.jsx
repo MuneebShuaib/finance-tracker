@@ -29,10 +29,10 @@ const TransactionForm = ()=>{
         setNote('')
     }
     return(
-            <form className = 'add-form' onSubmit={onSubmit}>
-                
-                    
-                    <label htmlFor="category">Transaction</label>
+            <form onSubmit={onSubmit}>
+                                    
+
+                <div className="add-form">
                     <input 
                     type = 'text' 
                     name="category"
@@ -64,7 +64,7 @@ const TransactionForm = ()=>{
                     placeholder = 'Enter note' 
                     value={note}                    
                     />
-                    
+                </div>
                 <button
                 type="submit" 
                 className = 'add-btn'>
@@ -72,6 +72,7 @@ const TransactionForm = ()=>{
                 </button>
                 
             </form>
+            
     )
 
 }

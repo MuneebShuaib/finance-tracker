@@ -51,6 +51,7 @@ table {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body{
@@ -66,48 +67,45 @@ body{
   height: 100%;
 }
 .container{
+  padding: 0 !important;
   display: grid;
   grid-template-columns: 20% 80%;
 
-  min-width: 100vw;  
+  min-width: 100%;  
   min-height: 100vh;  
 }
 .left-side-bar{
-  background-color: rgb(34, 78, 117);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: #212529;
 }
 .main-content{
   display: grid;
-  grid-template-rows: 60% 40%;
-  background-color: rgb(210, 91, 91);
+  grid-template-rows: 40% 60%;
+  background-color: #ced4da;
 }
 
 .main-content > section:nth-child(2){
-  background-color:rgb(118, 156, 5);
+  background-color:#f8f9fa;
 }
 
 .transaction-section{
   overflow: scroll;
   
 }
-.add-form{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1rem;
-}
-.add-form input{
-  padding: .5rem;
-  margin: .5rem;
-}
 .add-btn{
-  background-color: rgb(25, 205, 241);
-  border-radius: 12px;
+  background-color: #212529;
+  border-radius: 8px;
+  color: white;
 }
 .add-btn:hover{
-  background-color: rgb(29, 197, 231);
+  background-color: rgb(254, 254, 254);
+  color: black;
 }
 .add-btn:active{
-  background-color: rgb(25, 163, 190);
+  background-color: rgb(51, 52, 53);
 
 }
 
@@ -120,21 +118,32 @@ body{
 
 .header{
   display: flex;
-  background-color: rgb(73, 220, 234);
   justify-content: space-between;
   align-items: center;
+  background-color: #e9ecef;
+  color: #FFF;
 
 }
 .header ul{
+  margin: 0;
   display: flex;
-  justify-content: space-around;
   list-style-type: none;
+  color: #FFF;
+
 }
 .header ul li{
+  color: #FFF;
   list-style-type: none;
-  padding: 0 1rem;
 }
-
+.add-form{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  min-width: 100%;
+}
+.add-form input{
+  padding: .75rem;
+}
 .form{
   position: absolute;
   top: 50%;
@@ -146,16 +155,29 @@ body{
   justify-content: center;
   align-items: center;
   background-color: rgb(194, 126, 42);
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
   min-width: 25vw;
   min-height: 50vh;
 }
-.form button{
-  padding: 1rem;
+
+.transactions-list{
+  width: 100%;
+  padding: 2rem 0;
+}
+.transaction{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  min-width: 100%;
 
 }
+.grid-border{
+  border: 1px solid black;
+  padding: .75rem;
+}
+
+  
 
 .Spinner {
   width: 48px;
@@ -166,13 +188,13 @@ body{
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
-  }
+}
 
-  @keyframes rotation {
-  0% {
-      transform: rotate(0deg);
-  }
-  100% {
-      transform: rotate(360deg);
-  }
-  } 
+@keyframes rotation {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+} 

@@ -1,12 +1,11 @@
 import '../index.css';
 import TransactionForm from '../components/TransactionForm'
-import { useState } from 'react';
-import Transactions from '../components/Transactions'
 import {useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import Spinner from '../components/Spinner'
 import {getTransactions, reset} from '../features/transactions/transactionSlice'
+import TransactionItem from '../components/TransactionItem'
 function Dashboard(){
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -20,9 +19,15 @@ function Dashboard(){
       //if no user detected then navigate to the login page
       if(!user){
         navigate('/login')
+
+       
+      }
+       //If i get rid of this return my website stops working. 
+      else{
+        dispatch(getTransactions())
       }
 
-      dispatch(getTransactions())
+      
 
       return ()=>{
         dispatch(reset())
@@ -45,7 +50,15 @@ function Dashboard(){
 
           <section className = 'transaction-section'>
             <TransactionForm />
-            <Transactions transactions={transactions}/>
+            <section className = 'transactions-list'>
+              {transactions.length > 0 ? (
+                <div className="transactions">
+                  {transactions.map((transaction) =>(
+                    <TransactionItem key={transaction._id} transaction = {transaction}/>
+                  ))}
+                </div>
+              ) : (<h3>No Transactions yet</h3>)}
+            </section>
           </section>
         </div>
     </div>
