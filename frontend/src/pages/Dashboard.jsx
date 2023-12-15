@@ -6,12 +6,17 @@ import {useSelector, useDispatch} from 'react-redux'
 import Spinner from '../components/Spinner'
 import {getTransactions, reset} from '../features/transactions/transactionSlice'
 import TransactionItem from '../components/TransactionItem'
+import TransactionGraphs from '../components/TransactionGraphs'
+
+
+
 function Dashboard(){
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
     const { transactions, isLoading, isError, message} = useSelector((state) => state.transactions)
+
     useEffect(()=> {
       if(isError){
         console.log(message)
@@ -27,11 +32,11 @@ function Dashboard(){
         dispatch(getTransactions())
       }
 
-      
 
       return ()=>{
         dispatch(reset())
       }
+
     }, [user,navigate, isError, message, dispatch])
 
     if(isLoading){
@@ -44,9 +49,9 @@ function Dashboard(){
           <h1>Welcome {user && user.name}</h1>
         </div>
         <div className = 'main-content'>
-          <section className = 'graphs-section'>
-
-          </section>
+          <div className = 'graphs-section'>
+            <TransactionGraphs transactions={transactions}/>
+          </div>
 
           <section className = 'transaction-section'>
             <TransactionForm />
@@ -54,7 +59,7 @@ function Dashboard(){
               {transactions.length > 0 ? (
                 <div className="transactions">
                   {transactions.map((transaction) =>(
-                    <TransactionItem key={transaction._id} transaction = {transaction}/>
+                    <TransactionItem key={transaction._id} transaction = {transaction} />
                   ))}
                 </div>
               ) : (<h3>No Transactions yet</h3>)}

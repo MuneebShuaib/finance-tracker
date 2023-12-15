@@ -9,6 +9,7 @@
     "axios": "^1.2.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
+    "chart.js": "^4.4.1",
     "dotenv": "^16.0.3",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",

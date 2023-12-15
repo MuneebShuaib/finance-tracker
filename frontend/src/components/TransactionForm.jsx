@@ -3,8 +3,10 @@ import { useState } from "react"
 import { useDispatch } from 'react-redux'
 import { createTransaction } from '../features/transactions/transactionSlice'
 
-const TransactionForm = ()=>{
 
+const TransactionForm = ()=> {
+
+    
     const [category, setCategory] = useState('')
     const [date, setDate] = useState('')
     const [expenditure, setExpenditure] = useState(0)
@@ -22,6 +24,7 @@ const TransactionForm = ()=>{
             expenditure,
             note
         }))
+
 
         setCategory('')
         setDate('')
@@ -71,10 +74,10 @@ const TransactionForm = ()=>{
                 Add Transaction
                 </button>
                 
-            </form>
-            
+            </form>            
     )
 
 }
 
 export default TransactionForm
+
