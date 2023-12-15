@@ -5,7 +5,6 @@ import {Chart as ChartJS} from 'chart.js/auto'
 
 
 function TransactionGraphs({transactions}){
-    console.log(transactions)
     const [chartData, setChartData] = useState({
       labels: transactions?.map((data)=> data.category),
       datasets: [{
