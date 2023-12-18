@@ -10,12 +10,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useSelector } from 'react-redux';
 
 function App() {
 
-  const { user } = useSelector((state) => state.auth)
-  console.log(user)
 
   return (
     <div className = 'root'>

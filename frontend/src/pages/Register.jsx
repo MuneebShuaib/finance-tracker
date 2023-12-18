@@ -69,13 +69,13 @@ function Register(){
                 <input type="text" className="form-control" placeholder='Enter your name' value={name} id='name' name='name' onChange={onChange} />
             </div>
             <div className='form-group'>
-                <input type="text" className="form-control" placeholder='Enter your email' value={email} id='email' name='email' onChange={onChange} />
+                <input type="text" className="form-control" placeholder='Enter your email' value={email} id='email' name='email' onChange={onChange} required/>
             </div>
             <div className='form-group'>
-                <input type="password" className="form-control" placeholder='Enter your password' value={password} id='password' name='password' onChange={onChange} />
+                <input type="password" className="form-control" placeholder='Enter your password' value={password} id='password' name='password' onChange={onChange} required/>
             </div>
             <div className='form-group'>
-                <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
+                <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} required/>
             </div>
           <Button className = "submit-button" variant="primary" type="submit" >
             Submit

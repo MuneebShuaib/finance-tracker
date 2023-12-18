@@ -3,15 +3,17 @@ const asyncHandler = require("express-async-handler")
 const User = require("../models/userModel")
 
 const protect = asyncHandler(async(req, res, next)=>{
-    let token
+    let token = req.headers.authorization.split(' ')[1]
     //checking authorization header, making sure its a bearer token
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try {
             //Get token from header
             //assigning the token to this variable
-            token = req.headers.authorization.split(' ')[1]
+            
             //verify the token
             //decodes and verifies the token matches
+            // console.log(token)
+            // console.log(process.env.JWT_SECRET)
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
             //Get user from the token
