@@ -9,7 +9,7 @@ function TransactionItem({transaction}){
             <h4 className="grid-border">{transaction.category}</h4>
             <h4 className="grid-border">${transaction.expenditure}</h4>
             <h4 className="grid-border">{transaction.note}</h4>
-            <button onClick = {()=> dispatch(deleteTransaction(transaction._id))} className="close">X</button>
+            <button className = "delete-button" onClick = {()=> dispatch(deleteTransaction(transaction._id))} >X</button>
         </div>
     )
 }

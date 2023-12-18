@@ -10,22 +10,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useSelector } from 'react-redux';
 
 function App() {
 
+  const { user } = useSelector((state) => state.auth)
+  console.log(user)
+
   return (
     <div className = 'root'>
-    <Router>
-        <Header/>
-        <Routes>
-          <Route path = '/' element = {<Dashboard />}/>
-          <Route path = '/login' element = {<Login />}/>
-          <Route path = '/register' element = {<Register />}/>
-
-
-        </Routes>
-    </Router>
-    <ToastContainer/>
+      <Router>
+          <Header/>
+          <Routes>
+            <Route path = '/' element = {<Dashboard />}/>
+            <Route path = '/login' element = {<Login />}/>
+            <Route path = '/register' element = {<Register />}/>
+          </Routes>
+      </Router>
+      <ToastContainer/>
     </div>
   );
 }

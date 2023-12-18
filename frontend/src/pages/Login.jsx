@@ -54,6 +54,8 @@ function Login(){
       dispatch(login(userData))
     }
     return(
+        <>
+        <div className='slider-thumb'></div>
         <Form onSubmit={onSubmit} className='form'>
           <h1>Login</h1>
 
@@ -63,10 +65,11 @@ function Login(){
           <div className='form-group'>
               <input type="password" className="form-control" placeholder='Enter your password' value={password} id='password' name='password' onChange={onChange} />
           </div>
-        <Button variant="primary" type="submit">
+        <Button className = "submit-button" variant="primary" type="submit">
           Submit
         </Button>
       </Form>
+      </>
     )
 }
 

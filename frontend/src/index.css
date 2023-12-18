@@ -61,11 +61,60 @@ body{
   padding: 0px;
 }
 
+:root{
+  --green-color-1: #d8f3dc;
+  --green-color-2: #b7e4c7;
+  --green-color-3: #95d5b2;
+  --green-color-4: #74c69d;
+  --green-color-5: #52b788;
+  --green-color-6: #40916c;
+  --green-color-7: #2d6a4f;
+  --green-color-8: #1b4332;
+  --black-color-1: #081c15;
+}
 .root{
   width: 100%;
   height: 100%;
 
 }
+body {
+  height: 100vh;
+
+}
+
+.slider-thumb::before {
+  position: absolute;
+  content: "";
+  left: 30%;
+  top: 20%;
+  width: 450px;
+  height: 450px;
+  background: #17141d;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 5s linear infinite;
+  display: block;
+  z-index: -1;
+  -webkit-animation: sliderShape 5s linear infinite;
+}
+@keyframes sliderShape{
+  0%,100%{
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+  }
+  50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+  }
+}
+
 .container{
   padding: 0 !important;
   display: grid;
@@ -76,20 +125,25 @@ body{
 
 }
 .left-side-bar{
-  padding-top: 1rem;
   display: flex;
   justify-content: center;
   color: white;
-  background-color: #212529;
+  background-color: var(--black-color-1);
+}
+.welcome-user{
+  margin-top: 0;
+  display: flex;
+  padding: 0.5rem;
+  justify-content: center;
 }
 .main-content{
   display: grid;
   grid-template-rows: 40% 60%;
-  background-color: #ced4da;
+  background-color: white;
 }
 
 .main-content > section:nth-child(2){
-  background-color:#f8f9fa;
+  background-color:white;
 }
 
 .transaction-section{
@@ -120,20 +174,34 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e9ecef;
-  color: #FFF;
+  background-color: var(--green-color-5);
+  color: white;
+  list-style-type: none;
+  padding: 1rem;
 
 }
+
+.submit-button{
+  background-color: black !important;
+  border-color: black !important;
+}
+a{
+  text-decoration: none !important;
+  color: white !important;
+}
+.header button{
+  color: white;
+}
 .header ul{
+  display: flex;
+  gap: 2rem;
   margin: 0;
   display: flex;
-  list-style-type: none;
   color: #FFF;
 
 }
 .header ul li{
   color: #FFF;
-  list-style-type: none;
 }
 .add-form{
   width: 100%;
@@ -154,12 +222,13 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(194, 126, 42);
+  background-color: var(--green-color-5);
   border-radius: 1rem;
   padding: 1rem;
   gap: 1rem;
   min-width: 25vw;
   min-height: 50vh;
+  color: white;
 }
 
 .transactions-list{
@@ -173,6 +242,9 @@ body{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   min-width: 100%;
 
+}
+.delete-button{
+  position: absolute;
 }
 .grid-border{
   border: 1px solid black;
@@ -195,7 +267,10 @@ body{
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
-
+.welcome-user{
+  display: flex;
+  justify-content: center;
+}
 @keyframes rotation {
 0% {
     transform: rotate(0deg);

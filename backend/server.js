@@ -11,7 +11,8 @@ connectDB()
 const app = express()
 
 
-PORT = process.env.PORT //|| 5000
+PORT = process.env.PORT 
+PORT2 = process.env.PORT2
 //in order to use body data, we just have to add a couple lines of middleware
 //middleware:
 app.use(express.json())
@@ -24,5 +25,5 @@ app.use(errorHandler)
 //run express server on PORT, and console log 'server connected on port'
 //app.listen(PORT, ()=> console.log(`server connected on port ${PORT}`))
 
-app.listen(PORT, ()=> console.log(`server connected on port bhenchod`))
+app.listen(PORT || PORT2, ()=> console.log(`server connected on port bhenchod`))
 

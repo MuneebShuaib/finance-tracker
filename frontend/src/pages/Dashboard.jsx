@@ -46,7 +46,7 @@ function Dashboard(){
     return(
       <div className='container'>
         <div className ='left-side-bar'>
-          <h1>Welcome {user && user.name}</h1>
+          <h1 className='welcome-user'>Welcome {user && user.name}</h1>
         </div>
         <div className = 'main-content'>
           <div className = 'graphs-section'>

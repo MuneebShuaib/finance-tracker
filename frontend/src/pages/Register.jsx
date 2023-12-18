@@ -62,24 +62,28 @@ function Register(){
         return <Spinner />
       }
     return(
-        <Form onSubmit={onSubmit} className='form'>
-          <h1>Create an account</h1>
-          <div className='form-group'>
-              <input type="text" className="form-control" placeholder='Enter your name' value={name} id='name' name='name' onChange={onChange} />
-          </div>
-          <div className='form-group'>
-              <input type="text" className="form-control" placeholder='Enter your email' value={email} id='email' name='email' onChange={onChange} />
-          </div>
-          <div className='form-group'>
-              <input type="password" className="form-control" placeholder='Enter your password' value={password} id='password' name='password' onChange={onChange} />
-          </div>
-          <div className='form-group'>
-              <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
-          </div>
-        <Button variant="primary" type="submit" >
-          Submit
-        </Button>
-      </Form>
+        <>
+          <Form onSubmit={onSubmit} className='form'>
+            <h1>Create an account</h1>
+            <div className='form-group'>
+                <input type="text" className="form-control" placeholder='Enter your name' value={name} id='name' name='name' onChange={onChange} />
+            </div>
+            <div className='form-group'>
+                <input type="text" className="form-control" placeholder='Enter your email' value={email} id='email' name='email' onChange={onChange} />
+            </div>
+            <div className='form-group'>
+                <input type="password" className="form-control" placeholder='Enter your password' value={password} id='password' name='password' onChange={onChange} />
+            </div>
+            <div className='form-group'>
+                <input type="password" className="form-control" placeholder='Confirm password' value={password2} id='password2' name='password2' onChange={onChange} />
+            </div>
+          <Button className = "submit-button" variant="primary" type="submit" >
+            Submit
+          </Button>
+        </Form>
+        <div className='slider-thumb'></div>
+
+      </>
     )
 }
 
